@@ -1,8 +1,65 @@
-/* Stylesheet 2019 */
-<style>
-
+/* Stylesheet by Madison for 575*/
 body {
-	font-family: sans-serif;
-	}
+    font-family: "Lucida Console", Monaco, monospace;
+}
 
-</style>
+#title {
+    width: 100%;
+    height: 20px;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 14pt;
+}
+
+#subtitle {
+    width: 100%;
+    height: 20px;
+    padding-top: 5px;
+    text-align: center;
+    font-size: 10pt;
+}
+
+.map {
+    border: medium solid #999;
+    border-width: 2px;
+    margin: 10px 0 0 20px;
+}
+
+.gratBackground {
+    fill: #F7FBFF;
+}
+
+.gratLines {
+    fill: none;
+    stroke: #C6DBEF;
+    stroke-width: 0.33px;
+}
+
+.countries {
+    fill: #DEEBF7;
+    stroke: #fff;
+    stroke-width: 1px;
+}
+
+.provinceMap {
+    stroke: #fff;
+    stroke-width: 0.25px;
+    stroke-linecap: round;
+}
+
+.dropdown {
+    position: absolute;
+    top: 90px;
+    left: 45px;
+    z-index: 10;
+    font-family: monospace;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 2px;
+    border: 1px solid #999;
+    box-shadow: 2px 2px 4px #999;
+}
+
+option {
+    font-weight: normal;
+}
