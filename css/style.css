@@ -27,7 +27,7 @@ body {
 
 .retrieve {
     height: 250px;
-    width: 55%;
+    width: 45%;
     margin: 10px; 
     border: medium solid #999;
     border-width: 2px;
@@ -75,4 +75,17 @@ body {
 
 option {
     font-weight: normal;
+}
+
+#my_dataviz {
+    position: absolute;
+    bottom: 340px;
+    right: 10px;
+    height: 250px;
+    width: 45%;
+    margin: 10px; 
+    border: medium solid #999;
+    border-width: 2px;
+
+
 }
