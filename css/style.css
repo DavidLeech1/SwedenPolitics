@@ -26,11 +26,9 @@ body {
 }
 
 .retrieve {
-    height: 250px;
-    width: 45%;
+    height: 325px;
+    width: 55%;
     margin: 10px; 
-    border: medium solid #999;
-    border-width: 2px;
     float: right;
 }
 
@@ -78,14 +76,12 @@ option {
 }
 
 #my_dataviz {
+    float: right;
     position: absolute;
-    bottom: 340px;
+    top: 425px;
     right: 10px;
     height: 250px;
-    width: 45%;
-    margin: 10px; 
-    border: medium solid #999;
-    border-width: 2px;
-
+    width: 55%;
+    margin: 0 10 20 30;
 
 }

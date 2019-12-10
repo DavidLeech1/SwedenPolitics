@@ -8,7 +8,7 @@
     
     function setMap() {
         
-        var width = window.innerWidth * 0.50,
+        var width = window.innerWidth * 0.40,
             height = 600;
     
         var map = d3.select("body")
@@ -284,14 +284,14 @@
     //Parallel Plot
     
             // set the dimensions and margins of the graph
-        var margin = {top: 30, right: 10, bottom: 10, left: 0},
-          width = 840 - margin.left - margin.right,
-          height = 200 - margin.top - margin.bottom;
+        var margin = {top: 30, right: 10, bottom: 10, left: -20},
+          width = window.innerWidth * 0.60,
+          height = 250 - margin.top - margin.bottom;
 
         // append the svg object to the body of the page
         var svg = d3.select("#my_dataviz")
         .append("svg")
-          .attr("width", width + margin.left + margin.right)
+          .attr("width", width)
           .attr("height", height + margin.top + margin.bottom)
         .append("g")
           .attr("transform",
