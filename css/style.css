@@ -1,4 +1,4 @@
-/* Stylesheet by Madison for 575*/
+/* Stylesheet 2019*/
 body {
     font-family: "Lucida Console", Monaco, monospace;
 }
@@ -23,6 +23,19 @@ body {
     border: medium solid #999;
     border-width: 2px;
     margin: 10px 0 0 20px;
+}
+
+.retrieve {
+    height: 250px;
+    width: 55%;
+    margin: 10px; 
+    border: medium solid #999;
+    border-width: 2px;
+    float: right;
+}
+
+.retrieve h1{
+    font-size: 1.5em;
 }
 
 .gratBackground {

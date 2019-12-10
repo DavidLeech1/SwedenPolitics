@@ -16,7 +16,6 @@
             .attr("class", "map")
             .attr("width", width)
             .attr("height", height);
-                
     
         var projection = d3.geoAlbers()
             .center([0, 62])
@@ -44,10 +43,8 @@
         
             provinceData = joinData(provinceData, csvData);
             
-            setPlot(csvData);
-           
             var colorScale = createColorScale(csvData);
-            setEnumerationUnits(provinceData, countriesData, map, path, colorScale);
+            setEnumerationUnits(provinceData, countriesData, map, path, colorScale, csvData);
             
             createDropdown(csvData);
         
@@ -97,7 +94,7 @@
         return provinceData;
     };
     
-    function setEnumerationUnits(provinceData, countriesData, map, path, colorScale){
+    function setEnumerationUnits(provinceData, countriesData, map, path, colorScale, csvData){
         var countriesMap = map.append("path")
             .datum(countriesData)
             .attr("class", "countries")
@@ -115,7 +112,7 @@
                 return choropleth(d.properties, colorScale);
             })
             .on("mouseover", function(d){
-                highlight(d.properties);
+                highlight(d.properties, csvData);
             })
             .on("mouseout", function(d){
                 dehighlight(d.properties);
@@ -126,21 +123,6 @@
         
         return;
     }; 
-    
-    function setPlot(csvData){
-        var plot = d3.select("body")
-            .append("svg")
-            .attr("class", "plot")
-            .attr("width", 400)
-            .attr("height", 500)
-            .append("g")
-            .attr("transform", "translate(40, 50)");
-    
-        console.log(csvData);        
-    
-        return;
-        
-    };
     
     function createColorScale(data){
         var colorClasses = [
@@ -224,10 +206,12 @@
         
     };
     
-    function highlight(props){
+    function highlight(props, csv){
         var selected = d3.selectAll("." + props.NAME)
             .style("stroke", "#FED976")
             .style("stroke-width", "2");
+        
+        retrieve(props, csv);
     };
     
     function dehighlight(props){
@@ -249,8 +233,49 @@
             return styleObject[styleName];
         };
         
-        d3.select(".infoLabel")
-            .remove()
+        var removeText = document.getElementById("retrieve");
+        
+        removeText.innerHTML = "";
+        
+    };
+    
+    function retrieve(props, csv){
+                
+        var id = props.ID;
+        
+        var contentID = csv[id-1];
+    
+        var addText = document.getElementById("retrieve");
+        
+        var formatName = props.NAME.replace(new RegExp("_", "g"), " ");
+                
+        var population = thousandSeparator(Math.round(contentID.POPULATION));
+        
+        var valueBP = contentID.BIRTHPLACE*100;   
+    
+        var birthplace = valueBP.toFixed(2);
+        
+        var valueHE = contentID.HIGHERED*100;
+        
+        var highered = valueHE.toFixed(2);
+        
+        var dispincomeSEK = thousandSeparator(Math.round(contentID.DISPINCOME));
+        
+        var dispincomeUSD = thousandSeparator(Math.round(contentID.DISPINCOME*0.11));
+        
+        var valueL = contentID.LANDUSE*100;
+        
+        var landuse = valueL.toFixed(2);
+        
+        function thousandSeparator(x){
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        };
+        
+        var content = "<h1>" + formatName + " </h1><br>Percent of Vote for Party: " + props[expressed] + " % <br>Population: " + population + "<br> Population Density: " + contentID.POPDENS + " per square kilometer <br> Median Age: " + contentID.MEDIANAGE + " years <br> Percent of Population Born Outside Sweden: " + birthplace + "% <br> Percent of Population with Higher Education: " + highered + "% <br> Average Annual Disposable Income: " + dispincomeSEK + " SEK (" + dispincomeUSD + " USD) <br> Percent of Urban & Built Up Land: " + landuse + "%";
+        
+        addText.innerHTML = content;
+        
     };
     
 })();
+    
