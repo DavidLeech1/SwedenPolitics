@@ -1,26 +1,30 @@
 /* Stylesheet 2019*/
+
+@font-face {
+    font-family: 'Geo';
+    src: url('../font/Geo/geo-regular-webfont.woff2') format('woff2'),
+         url('../font/abel/geo-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     font-family: "Lucida Console", Monaco, monospace;
+    background-color: #E5EEF4;
 }
 
-#title {
-    width: 100%;
-    height: 20px;
-    padding-top: 10px;
-    text-align: center;
-    font-size: 14pt;
-}
-
-#subtitle {
-    width: 100%;
-    height: 20px;
-    padding-top: 5px;
-    text-align: center;
-    font-size: 10pt;
+.jumbotron {
+  background-color: #005594;
+  font-family: 'Geo';
+  font-size: 20px;
+  text-align: center;
+  color: #EFD201;
+  padding: 1;
 }
 
 .map {
     border: medium solid #999;
+    height: 615px;
     border-width: 2px;
     margin: 10px 0 0 20px;
 }
@@ -42,13 +46,13 @@ body {
 }
 
 .party {
-    height: 160px;
+    height: 176px;
     width: 55%;
     margin: 10px;
     float: right;
     font-size: 10pt;
     position: absolute;
-    top: 502px;
+    top: 600px;
     right: 10px;
     border: medium solid #999;
     border-width: 2px;
@@ -78,7 +82,7 @@ body {
 
 .dropdown {
     position: absolute;
-    top: 90px;
+    top: 185px;
     left: 45px;
     z-index: 10;
     font-family: monospace;
@@ -96,7 +100,7 @@ option {
 #my_dataviz {
     float: right;
     position: absolute;
-    top: 250px;
+    top: 355px;
     right: 10px;
     height: 250px;
     width: 55%;
