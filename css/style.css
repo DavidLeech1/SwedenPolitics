@@ -26,14 +26,32 @@ body {
 }
 
 .retrieve {
-    height: 325px;
+    position: absolute;
+    right: 10px;
+    height: 175px;
     width: 55%;
     margin: 10px; 
     float: right;
+    font-size: 10pt;
+    border: medium solid #999;
+    border-width: 2px;
 }
 
 .retrieve h1{
-    font-size: 1.5em;
+    font-size: 14pt;
+}
+
+.party {
+    height: 160px;
+    width: 55%;
+    margin: 10px;
+    float: right;
+    font-size: 10pt;
+    position: absolute;
+    top: 502px;
+    right: 10px;
+    border: medium solid #999;
+    border-width: 2px;
 }
 
 .gratBackground {
@@ -78,7 +96,7 @@ option {
 #my_dataviz {
     float: right;
     position: absolute;
-    top: 425px;
+    top: 250px;
     right: 10px;
     height: 250px;
     width: 55%;
