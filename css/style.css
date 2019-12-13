@@ -107,3 +107,11 @@ option {
     margin: 0 10 20 30;
 
 }
+
+
+.axis {
+  opacity: 0.4;
+}
+.axis:hover {
+  opacity: 1;
+}

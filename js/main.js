@@ -225,6 +225,9 @@
         var selected = d3.selectAll("." + props.NAME)
             .style("stroke", "#FED976")
             .style("stroke-width", "2");
+        var selectedline = d3.selectAll(".line")
+            .style("stroke", "#1b9e1f")
+            .style("stroke-width", "2");
         
         retrieve(props, csv);
     };
@@ -314,8 +317,8 @@
 
         // Parse the Data
         d3.csv("data/riksdag2.csv", function(data) {
-          // Extract the list of dimensions we want to keep in the plot. Here I keep all except the column called Species
-          dimensions = d3.keys(data[0]).filter(function(d) { return d != "ID" })
+          // Extract the list of dimensions we want to keep in the plot. Here I keep all except the column called ID
+          dimensions = d3.keys(data[0]).filter(function(d) { return d != "ID" && d != "NAME" })
 
           // For each dimension, I build a linear scale. I store all in a y object
           var y = {}
@@ -331,6 +334,35 @@
             .range([0, width])
             .padding(1)
             .domain(dimensions);
+            
+            
+              // Highlight the specie that is hovered
+          var highlightplot = function(d){
+
+            selected_line = d.NAME
+
+            // first every line turns grey
+            d3.selectAll(".line")
+              .transition().duration(200)
+              .style("stroke", "#b325ae")
+              .style("opacity", "1")
+              .style("stroke-width", "3")
+            // Second the hovered line is colored
+            d3.selectAll("." + selected_line)
+              .transition().duration(200)
+              .style("stroke", "#FED976")
+              .style("opacity", "1")
+              .style("stroke-width", "3")
+          }
+          
+                  // Unhighlight
+          var doNotHighlight = function(d){
+            d3.selectAll("." + selected_line)
+              .transition().duration(200)
+              .style("stroke", "#9ECAE1" )
+              .style("opacity", "1")
+              .style("stroke-width", "0.5")
+          }
 
           // The path function take a row of the csv as input, and return x and y coordinates of the line to draw for this raw.
           function path(d) {
@@ -342,10 +374,14 @@
             .selectAll("myPath")
             .data(data)
             .enter().append("path")
+            .attr("class", "line") //new
+            //.attr("class", function (d) { return "line " + d.Species } )
             .attr("d",  path)
             .style("fill", "none")
             .style("stroke", "#9ECAE1")
             .style("opacity", 0.5)
+            .on("mouseover", highlightplot)
+            .on("mouseleave", doNotHighlight)
 
           // Draw the axis:
           svg.selectAll("myAxis")
@@ -365,7 +401,7 @@
 
         })
     
-    
+          
     
     
     
