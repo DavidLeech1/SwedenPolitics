@@ -344,7 +344,7 @@
             .enter().append("path")
             .attr("d",  path)
             .style("fill", "none")
-            .style("stroke", "#69b3a2")
+            .style("stroke", "#9ECAE1")
             .style("opacity", 0.5)
 
           // Draw the axis:
