@@ -375,8 +375,8 @@
             .selectAll("myPath")
             .data(data)
             .enter().append("path")
-            .attr("class", "line") //new
-            //.attr("class", function (d) { return "line " + d.Species } )
+            //.attr("class", "line") //new
+            .attr("class", function (d) { return "line " + d.NAME } )
             .attr("d",  path)
             .style("fill", "none")
             .style("stroke", "#9ECAE1")
