@@ -318,7 +318,8 @@
         // Parse the Data
         d3.csv("data/riksdag2.csv", function(data) {
           // Extract the list of dimensions we want to keep in the plot. Here I keep all except the column called ID
-          dimensions = d3.keys(data[0]).filter(function(d) { return d != "ID" && d != "NAME" })
+          //dimensions = d3.keys(data[0]).filter(function(d) { return d != "ID" && d != "NAME" })
+            dimensions = ["SocialDemocratic","Moderate","SwedishDemocratic","Center","Left","ChristianDemocratic","Liberal","Green","Feminist","Other"]
 
           // For each dimension, I build a linear scale. I store all in a y object
           var y = {}
@@ -344,9 +345,9 @@
             // first every line turns grey
             d3.selectAll(".line")
               .transition().duration(200)
-              .style("stroke", "#b325ae")
+              .style("stroke", "lightgray")
               .style("opacity", "1")
-              .style("stroke-width", "3")
+              .style("stroke-width", "1")
             // Second the hovered line is colored
             d3.selectAll("." + selected_line)
               .transition().duration(200)
@@ -374,8 +375,8 @@
             .selectAll("myPath")
             .data(data)
             .enter().append("path")
-            .attr("class", "line") //new
-            //.attr("class", function (d) { return "line " + d.Species } )
+            //.attr("class", "line") //new
+            .attr("class", function (d) { return "line " + d.NAME } )
             .attr("d",  path)
             .style("fill", "none")
             .style("stroke", "#9ECAE1")
